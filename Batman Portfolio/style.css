@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    transition: .3s;
+    text-decoration: none;
+    color: #a2a2a2;
+    box-sizing: border-box;
+}
+
+body {
+  background-image: url('1347146.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Add this line */
+  min-height: 100vh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Change from 'absolute' to 'fixed' */
+  top: 0;
+  left: 0;
+  background: #111111f3;
+  z-index: -1;
+}
+
+#icon{
+    width: 30px;
+    cursor: pointer;
+}
+.container {
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+}
+
+nav.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+nav.navbar .logo img {
+    width: 95px;
+    height: 25px;
+
+}
+
+nav.navbar .left {
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar ul a {
+    display: block;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    animation: FadeIn 1s linear forwards;
+
+}
+
+nav.navbar a:hover {
+    color: red;
+}
+
+nav.navbar ul a.active {
+    color: red;
+}
+
+nav.navbar .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.content {
+    margin-top: 1rem;
+    animation: FadeIn 1s linear forwards;
+}
+
+.content .title {
+    width: 65%;
+}
+
+.content .paragraph {
+    width: 65%;
+    margin-top: 0;
+}
+
+.content .companies {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.content .companies img {
+    width: fit-content;
+    height: 30px;
+}
+
+.content .buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.content .buttons a {
+    display: block;
+    padding: 15px 4%;
+    margin-right: 3rem;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    transform: skew(-8deg);
+}
+
+.content .buttons a.Trailer {
+    border: 2px solid red;
+}
+
+.content .buttons a.Trailer:hover {
+    background: red;
+}
+
+.content .buttons a.preorder {
+    background: rgb(208, 4, 4);
+}
+
+.content .buttons a.preorder {
+    background: rgb(245, 13, 13);
+}
+
+.content .character {
+    position: absolute;
+    width: 80%;
+    right: -36%;
+    top: 0%;
+}
+.overlay {
+  position: fixed;   /* Stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7); /* black with opacity */
+  z-index: 1;  /* stays on top of background, but below your images */
+}
+@keyframes FadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

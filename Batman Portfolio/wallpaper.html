@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman</title>
+    <link rel="stylesheet" href="wallpaper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar container">
+        <div class="left">
+            <a href="index.html" class="logo">
+                <img src="img/WhatsApp Image 2024-08-10 at 22.55.26_6b1c18a1.jpg">
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="story.html">Story</a></li>
+                <li><a href="wallpaper.html" class="active">Wallpaper</a></li>
+                <li><a href="beyour.html">beyourself</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <center>
+        <h2>WALLPAPER</h2><br>
+        <div class="search-container">
+            <img src="img/search.png" height="20px" width="20px" alt="Search Icon">
+            <input type="text" id="searchBox" placeholder="Search wallpapers..." />
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <img src="img/add.png" alt="plus" height="25px" width="25px">
+                </button>
+                <div class="dropdown-content">
+                    <div class="option">
+                        <img src="img/icons8-create-50.png" alt="Pin" />
+                        <a href="https://www.canva.com/" target="_blank">
+                            <span>Create</span>
+                        </a>
+                    </div>
+                    <div class="option">
+                        <img src="img/collage.png" alt="Collage" />
+                        <span>Collage</span>
+                    </div>
+                    <div class="option upload-option">
+                        <img src="img/upload-big-arrow.png" alt="Upload" />
+                        <span>Upload</span>
+                        <!-- Hidden file input -->
+                        <input type="file" id="uploadInput" accept="image/*" hidden>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <div class="overlay"></div>
+    <div class="container">
+        <section class="gallery" id="gallery">
+            <img src="img/1.jpeg" alt="batman city">
+            <img src="img/2.jpeg" alt="batman logo">
+            <img src="img/3.jpeg" alt="batman vs joker">
+            <img src="img/4.jpeg" alt="batman city">
+        </section>
+    </div>
+
+    <script src="wallpaper.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Which Batman Are You?</title>
+  <style>
+    body {
+        background-color: #111111;
+        color: #a2a2a2;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .quiz-container h1 {
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .question h3 {
+      color: #a2a2a2;
+    }
+
+    .options label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+      color: #a2a2a2;
+    }
+
+    #submit-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    #submit-btn:hover {
+      background-color: #b70000;
+    }
+
+    #quiz-result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>Which Batman Are You?</h1>
+    <div id="quiz-questions">
+      </div>
+    <button id="submit-btn">Find Out!</button>
+    <div id="quiz-result">
+      </div>
+  </div>
+
+  <script>
+    // A JavaScript array of objects for the quiz questions and answers.
+    const quizData = [
+      {
+        question: "What is your primary motivation?",
+        options: {
+          a: "Vengeance",
+          b: "Justice",
+          c: "Understanding"
+        },
+        // The "value" will determine the final result
+        values: { a: "Bale", b: "Affleck", c: "Pattinson" }
+      },
+      {
+        question: "What is your main weapon?",
+        options: {
+          a: "Gadgets and technology",
+          b: "Physical strength and combat",
+          c: "Your mind and detective skills"
+        },
+        values: { a: "Pattinson", b: "Affleck", c: "Bale" }
+      },
+      {
+        question: "What is your relationship with your city?",
+        options: {
+          a: "A symbol of hope for it",
+          b: "Its protector, even if it fears you",
+          c: "A reflection of its grim reality"
+        },
+        values: { a: "Bale", b: "Affleck", c: "Pattinson" }
+      }
+    ];
+
+    const quizEl = document.getElementById('quiz-questions');
+    const submitBtn = document.getElementById('submit-btn');
+    const resultEl = document.getElementById('quiz-result');
+
+    // Function to render the questions on the page
+    function renderQuiz() {
+      quizData.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question');
+        questionDiv.innerHTML = `<h3>${index + 1}. ${q.question}</h3>
+          <div class="options">
+            ${Object.keys(q.options).map(key => `
+              <label>
+                <input type="radio" name="question-${index}" value="${q.values[key]}">
+                ${q.options[key]}
+              </label>
+            `).join('')}
+          </div>`;
+        quizEl.appendChild(questionDiv);
+      });
+    }
+
+    // Function to calculate and display the result
+    function calculateResult() {
+      const answers = {};
+      let mostFrequent = '';
+      let maxCount = 0;
+      let allAnswered = true;
+
+      quizData.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="question-${index}"]:checked`);
+        if (selected) {
+          const value = selected.value;
+          answers[value] = (answers[value] || 0) + 1;
+        } else {
+          allAnswered = false;
+        }
+      });
+
+      if (!allAnswered) {
+        resultEl.innerHTML = `Please answer all questions.`;
+        return;
+      }
+
+      // Find the Batman with the most votes
+      for (const batman in answers) {
+        if (answers[batman] > maxCount) {
+          maxCount = answers[batman];
+          mostFrequent = batman;
+        }
+      }
+
+      // Display the final result
+      resultEl.innerHTML = `You are **${mostFrequent}** Batman!`;
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', renderQuiz);
+    submitBtn.addEventListener('click', calculateResult);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Story (Simple)</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #a2a2a2;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .story-container {
+            background-color: #1a1a1a;
+            border: 2px solid red;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 700px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        #story-text {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: .15em solid red;
+            animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: red; }
+        }
+
+        #fetch-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 30px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        #fetch-btn:hover {
+            background-color: #b70000;
+            transform: translateY(-2px);
+        }
+        
+        #fetch-btn:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BATMAN STORY</h1>
+
+    <div class="story-container">
+        <p id="story-text">Click the button below to reveal a Batman fact.</p>
+    </div>
+
+    <button id="fetch-btn">Reveal a Fact</button>
+
+    <script>
+        const storyTextEl = document.getElementById('story-text');
+        const fetchBtn = document.getElementById('fetch-btn');
+
+        // Here are some pre-written facts about Batman.
+        const facts = [
+            "Batman's real name is Bruce Wayne.",
+            "He lives in Gotham City.",
+            "Batman has no superpowers. He relies on his intelligence, strength, and gadgets.",
+            "His famous car is the Batmobile.",
+            "Batman's sidekick is Robin.",
+            "His archenemy is The Joker."
+        ];
+
+        // Function to display a random fact
+        function displayRandomFact() {
+            // Disable the button to prevent multiple clicks
+            fetchBtn.disabled = true;
+            
+            // Get a random fact from the array
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            
+            // Reset the animation by clearing the text
+            storyTextEl.style.width = '0%';
+            
+            // Delay setting the new text to restart the animation
+            setTimeout(() => {
+                storyTextEl.innerHTML = randomFact;
+                storyTextEl.style.width = '100%';
+                
+                // Re-enable the button
+                fetchBtn.disabled = false;
+            }, 50);
+        }
+
+        // Add event listener to the button
+        fetchBtn.addEventListener('click', displayRandomFact);
+
+        // Initial message
+        document.addEventListener('DOMContentLoaded', () => {
+            storyTextEl.innerHTML = "Click the button to reveal a new Batman fact.";
+        });
+    </script>
+
+</body>
+</html>
