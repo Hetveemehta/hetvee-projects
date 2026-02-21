@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&family=Great+Vibes&display=swap');
+
+:root {
+    --dark-blue: #0d1117;
+    --beige: #d5c6a1;
+    --indigo: #3c4c7b;
+    --cream: #f4ede0;
+}
+
+/* GLOBAL */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    color: var(--beige);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-blue);
+    text-align: center;
+}
+
+/* ---------- LANDING PAGE ---------- */
+.landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--dark-blue);
+}
+
+.logo {
+  font-size: 3.2rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  font-family: 'Great Vibes', cursive;
+  color: var(--cream);
+}
+
+.photo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+/* center both strips properly */
+.photo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  position: relative;
+}
+
+/* the strips themselves */
+.photo-strip {
+  width: 160px;
+  height: 380px;
+  object-fit: cover;
+  border: 4px solid var(--beige);
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+.photo-strip.left {
+  transform: rotate(-4deg);
+}
+
+.photo-strip.right {
+  transform: rotate(4deg);
+}
+
+/* hover effect — soft + centered */
+.photo-area:hover .photo-strip.left {
+  transform: rotate(-2deg) scale(1.03);
+}
+.photo-area:hover .photo-strip.right {
+  transform: rotate(2deg) scale(1.03);
+}
+
+.photo-area:hover {
+  transform: scale(1.02);
+}
+
+/* lil glowing text below */
+.photo-text {
+  color: var(--beige);
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-top: 1.5rem;
+  text-shadow: 0 0 12px rgba(213,198,161,0.3);
+  animation: fadeInText 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* ---------- BOOTH ---------- */
+.booth-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-title {
+    font-size: 2.3rem;
+    margin: 0;
+}
+
+.main-title span {
+    font-family: 'Great Vibes', cursive;
+    color: var(--cream);
+}
+
+.booth-wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:60px;
+  position:relative;
+}
+
+
+
+
+.video-box {
+    position: relative;
+    background: #111;
+    border: 4px solid var(--beige);
+    border-radius: 20px;
+    width: 850px;
+    height: 550px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(213, 198, 161, 0.15);
+        margin-left: 200px;
+
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.countdown {
+    position: absolute;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--cream);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* live strip thumbnails (right side) */
+.live-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 150px;
+  min-height: 550px;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+/* small wrapper for gradient border effect */
+.live-strip .thumb-wrap {
+    width: 145px;
+    padding: 3px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--beige), var(--indigo));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.live-strip img {
+    display: block;
+    width: 140px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+}
+/* strip starts invisible but space is kept */
+.hidden-strip {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(30px);
+  pointer-events: none;
+}
+
+.live-strip img.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideIn 0.45s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: 2px solid var(--beige);
+    background: transparent;
+    color: var(--beige);
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: var(--beige);
+    color: var(--dark-blue);
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay-content {
+    background: rgba(13, 17, 23, 0.6);
+    border: 2px solid var(--beige);
+    border-radius: 16px;
+    padding: 2rem 3rem;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(213, 198, 161, 0.3);
+    animation: fadeIn 0.6s ease;
+}
+
+.overlay-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+    animation: glowPulse 2s infinite ease-in-out;
+}
+
+.overlay-title span {
+    font-family: 'Great Vibes', cursive;
+    color: var(--cream);
+}
+
+.overlay p {
+    color: var(--beige);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.overlay-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+/* ---------- EDITOR PAGE + PANEL ---------- */
+.editor-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    height: calc(100vh - 120px);
+}
+
+/* Strip container (centered vertical strip) */
+.strip-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 100%;
+}
+
+.photo-strip-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, var(--beige), var(--indigo));
+  padding: 20px 6px 80px; /* smaller + still thick bottom */
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(60, 76, 123, 0.3); /* soft indigo glow */
+  width: 200px;
+  height: 600px;
+  gap: 6px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.photo-strip-vertical img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 3px solid #fff;
+  background-color: #fff;
+  filter: brightness(1.05) contrast(1.05);
+  box-shadow: 0 0 10px rgba(213,198,161,0.15);
+}
+
+
+
+
+/* frame variants */
+.photo-strip-vertical.beige {
+    background: linear-gradient(180deg, var(--beige), var(--indigo));
+}
+
+.photo-strip-vertical.indigo {
+    background: linear-gradient(180deg, var(--indigo), #2b375a);
+}
+
+.photo-strip-vertical.cream {
+    background: linear-gradient(180deg, var(--cream), var(--beige));
+}
+
+.photo-strip-vertical.pink {
+    background: linear-gradient(180deg, #f5c0c0, #e0b7e4);
+}
+
+/* bottom design */
+.photo-strip-vertical.bottom-design::after {
+    content: "indigo";
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Great Vibes', cursive;
+    color: var(--cream);
+    padding: 12px 0;
+    border-radius: 0 0 12px 12px;
+    margin-top: 6px;
+}
+/* stop default watermark from forcing itself */
+.photo-strip-vertical::after {
+  content: none !important;
+}
+
+/* show footer ONLY when user applies text */
+.photo-strip-vertical.bottom-design::after {
+  content: attr(data-bottom-text);
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.95rem;                /* tweak if you want smaller */
+  font-family: 'Great Vibes', cursive;
+  color: var(--cream);
+  background: rgba(13,17,23,0.85);
+  padding: 10px 12px;
+  border-radius: 0 0 12px 12px;
+  letter-spacing: .3px;
+  white-space: pre;
+}
+
+
+/* control panel */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--beige);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(213, 198, 161, 0.12);
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(213, 198, 161, 0.08);
+    min-width: 320px;
+    margin-top: 0%;
+}
+
+.control-panel h3 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.control-panel p {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+.control-panel button {
+    background: transparent;
+    border: 1px solid rgba(213, 198, 161, 0.25);
+    color: var(--beige);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 0.85rem;
+}
+
+.control-panel button:hover {
+    background: var(--beige);
+    color: var(--dark-blue);
+}
+
+.color-picker {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    align-content: center;
+}
+
+.color-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: transform 0.15s;
+}
+
+.color-dot:hover {
+    transform: scale(1.08);
+}
+
+.color-dot.beige {
+    background: var(--beige);
+}
+
+.color-dot.indigo {
+    background: var(--indigo);
+}
+
+.color-dot.cream {
+    background: var(--cream);
+}
+.photo-strip-vertical.black {
+  background: linear-gradient(180deg, #000000, #1a1a1a);
+}
+
+.color-dot.pink {
+    background: linear-gradient(135deg, #f5c0c0, #e0b7e4);
+}
+
+/* Filters classes for images */
+.photo-strip-vertical img.filter-bw {
+    filter: grayscale(100%) contrast(1.2);
+}
+
+.photo-strip-vertical img.filter-warm {
+    filter: contrast(1.05) saturate(1.25) sepia(0.25);
+}
+
+.photo-strip-vertical img.filter-cool {
+    filter: contrast(1.05) saturate(1.05) hue-rotate(-20deg);
+}
+
+.photo-strip-vertical img.filter-grain {
+    filter: contrast(1.05) brightness(1.02) grayscale(0.15);
+}
+
+/* responsiveness */
+@media (max-width: 900px) {
+    .editor-wrapper {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .strip-container {
+        width: 100%;
+    }
+
+    .control-panel {
+        min-width: unset;
+        width: 92%;
+    }
+}
+#downloadStripBtn {
+  background: var(--indigo);
+  border: 1px solid rgba(213, 198, 161, 0.3);
+  color: var(--cream);
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 0px;
+}
+
+#downloadStripBtn:hover {
+  background: var(--beige);
+  color: var(--dark-blue);
+}
+.divider {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--beige), transparent);
+  border: none;
+  margin: 1px auto;
+  opacity: 0.6;
+}
+.custom-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#bottomTextInput {
+  background: var(--indigo);
+  border: 1px solid rgba(213, 198, 161, 0.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--dark-blue);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  width: 90%;
+  text-align: center;
+}
+
+#bottomTextInput {
+  color: var(--cream);
+}
+
+
+.custom-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottom-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#applyBottomText,
+#removeBottomText {
+  border: 1px solid rgba(213,198,161,0.3);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 0.85rem;
+}
+
+#applyBottomText {
+  background: var(--indigo);
+}
+
+#applyBottomText:hover {
+  background: var(--beige);
+  color: var(--dark-blue);
+}
+
+#removeBottomText {
+  background: var(--indigo);
+}
+
+#removeBottomText:hover {
+  background: var(--beige);
+  color: var(--dark-blue);
+}
+
+
+/* ===================== MOBILE EDITOR PANEL ===================== */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .mobile-only {
+    display: block;
+  }
+
+  /* ✅ the button that opens the panel */
+  #openEditorBtn {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--indigo);
+    color: var(--cream);
+    border: 1px solid rgba(213,198,161,0.4);
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    z-index: 999;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  }
+
+  /* ✅ slide-up bottom drawer */
+  #mobileEditorPanel {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: rgba(13,17,23,0.95);
+    border-top: 2px solid var(--beige);
+    padding: 18px 20px 35px;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
+    transition: bottom .35s ease;
+    z-index: 9999;
+  }
+
+  #mobileEditorPanel.open {
+    bottom: 0;
+  }
+
+  #closeMobilePanel {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--cream);
+  }
+
+  .mobile-section-title {
+    font-size: 1rem;
+    margin: 6px 0 4px;
+    text-align: left;
+  }
+
+  .mobile-filter-grid button {
+    margin: 4px 4px;
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+
+  #downloadStripBtn {
+    width: 100%;
+    margin-top: 16px;
+    font-size: 0.95rem;
+  }
+
+  /* ✅ shrink strip on phone */
+  .photo-strip-vertical {
+    width: 48vw;
+    height: 78vh;
+    padding: 12px 6px 50px;
+  }
+
+  .photo-strip-vertical img {
+    width: calc(48vw - 20px);
+    height: calc((78vh - 50px - 3*6px) / 4);
+  }
+
+}
+/* hide desktop editor controls on mobile */
+@media (max-width: 600px) {
+  .control-panel {
+    display: none !important;
+  }
+}
+/* hide mobile edit button on desktop */
+@media (min-width: 601px) {
+  #openEditorBtn {
+    display: none !important;
+  }
+
+  #mobileEditorPanel {
+    display: none !important;
+  }
+}
+@media (max-width: 600px) {
+  .editor-wrapper {
+    justify-content: center !important;
+  }
+}
+

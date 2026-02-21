@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INDIGO Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="editor-page">
+
+  <h1 class="main-title">INDIGO <span>Editor</span></h1>
+
+  <div class="editor-wrapper">
+
+    <!-- PHOTO STRIP -->
+    <div class="strip-container">
+      <div id="editorStrip" class="photo-strip-vertical beige"></div>
+    </div>
+
+    <!-- CONTROL PANEL (FULL DESKTOP) -->
+    <div class="control-panel" id="controlPanel">
+
+      <h3>Edit</h3>
+      <hr class="divider">
+
+      <!-- FRAME COLORS -->
+      <p>Frame:</p>
+      <div class="color-picker">
+        <div class="color-dot beige" data-frame="beige"></div>
+        <div class="color-dot indigo" data-frame="indigo"></div>
+        <div class="color-dot cream" data-frame="cream"></div>
+        <div class="color-dot pink" data-frame="pink"></div>
+        <div class="color-dot black" data-frame="black"></div>
+      </div>
+      <!-- FILTERS -->
+      <p>Filter:</p>
+      <div class="filter-controls">
+        <button data-filter="none">Original</button>
+        <button data-filter="bw">B&W</button>
+        <button data-filter="warm">Warm</button>
+        <button data-filter="cool">Cool</button>
+        <button data-filter="grain">Grain</button>
+      </div>
+
+
+      <!-- CUSTOM TEXT (DESKTOP ONLY) -->
+      <div class="custom-bottom">
+        <input type="text" id="bottomTextInput" placeholder="type your bottom text…" maxlength="40">
+        <div class="bottom-buttons">
+          <button id="applyBottomText">Apply</button>
+          <button id="removeBottomText">Remove</button>
+        </div>
+      </div>
+
+      <button id="downloadStripBtn">Download Strip 📸</button>
+
+    </div>
+
+  </div>
+<!-- ✅ MOBILE EDITOR TOGGLE BUTTON -->
+<button id="openEditorBtn" class="mobile-only">Edit ✦</button>
+
+<!-- ✅ MOBILE SLIDE-UP EDITOR PANEL -->
+<div id="mobileEditorPanel" class="mobile-only">
+  
+  <button id="closeMobilePanel">✕</button>
+
+  <p class="mobile-section-title">Frame:</p>
+  <div class="color-picker">
+    <div class="color-dot beige"  data-frame="beige"></div>
+    <div class="color-dot indigo"  data-frame="indigo"></div>
+    <div class="color-dot cream"   data-frame="cream"></div>
+    <div class="color-dot pink"    data-frame="pink"></div>
+    <div class="color-dot black"   data-frame="black"></div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="mobile-section-title">Filter:</p>
+  <div class="filter-controls mobile-filter-grid">
+    <button data-filter="none">Original</button>
+    <button data-filter="bw">B&W</button>
+    <button data-filter="warm">Warm</button>
+    <button data-filter="cool">Cool</button>
+    <button data-filter="grain">Grain</button>
+  </div>
+
+  <hr class="divider">
+
+  <button id="downloadStripBtn">Download Strip 📸</button>
+</div>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>

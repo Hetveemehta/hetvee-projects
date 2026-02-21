@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INDIGO Photobooth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="booth-page">
+
+  <h1 class="main-title">INDIGO <span>booth</span></h1>
+
+  <div class="booth-container">
+    <div class="booth-wrapper">
+
+      <!-- CAMERA -->
+      <div class="video-box">
+        <video id="video" autoplay playsinline></video>
+        <div id="countdown" class="countdown"></div>
+
+        <!-- MOBILE: toggle live strip -->
+        <button id="stripToggle" class="strip-toggle mobile-only">📸</button>
+      </div>
+
+      <!-- LIVE STRIP -->
+      <div id="liveStrip" class="live-strip hidden-strip"></div>
+
+    </div>
+
+    <button id="startBtn">Start Capturing</button>
+  </div>
+
+  <!-- OVERLAY (after 4 pics taken) -->
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 class="overlay-title">Photos ready! ✨</h2>
+      <p>Want to retake or continue to edit?</p>
+      <div class="overlay-buttons">
+        <button id="retakeBtn">Retake</button>
+        <button id="continueBtn">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

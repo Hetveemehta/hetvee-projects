@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INDIGO BOOTH | Result</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="result">
+  <div class="result-container">
+    <h1 class="main-title small">INDIGO <span>photobooth</span></h1>
+
+    <!-- Photo strip -->
+    <div class="strip-container vertical beige" id="stripContainer">
+      <img id="photo1" alt="Captured photo 1" />
+      <img id="photo2" alt="Captured photo 2" />
+      <img id="photo3" alt="Captured photo 3" />
+      <img id="photo4" alt="Captured photo 4" />
+    </div>
+
+    <!-- Buttons -->
+    <div class="result-buttons">
+      <button onclick="retakePhotos()">Retake Photos</button>
+      <button onclick="goToEditor()">Continue</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
